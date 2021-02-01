@@ -1,5 +1,5 @@
 {
-  "name": "vue3-typescript-element-ui-d3",
+  "name": "search_something_platform_taiwan",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -18,7 +18,7 @@
     "core-js": "^3.6.5",
     "element-plus": "^1.0.1-beta.17",
     "vue": "^3.0.5",
-    "vue-router": "^4.0.0-0",
+    "vue-router": "^4.0.3",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
