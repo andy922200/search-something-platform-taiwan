@@ -1,7 +1,7 @@
-# Vue3 + TypeScript + Jest + TestCafe Integrated Template 整合模板
+# Search Something What You Need in Taiwan
 
 <p align="center">
-    <img src="./iconForReadme.png" alt="logo" width="256" height="147">
+    <img src="./iconForReadme.jpg" alt="logo" width="256" height="147">
 </p>
 
 ## Table of Contents
@@ -9,8 +9,14 @@
 - [Prerequisites](#prerequisites)
 
 ## About this project 
-<p>This template includes the following packages:</p>
-<p>這模板整合了以下套件</p>
+<p>This Project includes the following modules:</p>
+<ul>
+    <li>Taiwan Motel Map</li>
+    <li>... update soon</li>
+</ul>
+
+<p>This project are using the following packages:</p>
+<p>這專案使用了以下套件</p>
 
 - [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
 - [Babel Compiler](https://babeljs.io/) - Use next generation JavaScript, today.
@@ -38,7 +44,7 @@ This Demo project is running on Node.js (12.20.0), NPM (6.14.9) while testing.
 2. Start your development :)
 
 ```
-$ git clone https://github.com/andy922200/vue3-typescript-jest-elementUI-testcafe.git
+$ git clone https://github.com/andy922200/search-something-platform-taiwan.git
 ```
 
 ## Related Scripts
