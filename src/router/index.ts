@@ -5,8 +5,8 @@ import {
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
-        name: 'Index',
-        component: () => import('../views/Home/Home.vue')
+        name: 'Motel',
+        component: () => import('../views/Motel/Motel.vue')
     },
     {
         path: '/about',
