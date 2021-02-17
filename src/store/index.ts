@@ -2,15 +2,21 @@ import {
     createStore
 } from 'vuex'
 
-import motel from './modules/motel'
+import motelModule from './modules/motel'
 import dayjs from 'dayjs'
 
+import {
+    RootState
+} from './declarations/index'
+
+const state: RootState = {
+    today: dayjs(),
+    leftNavigationStatus: false,
+    windowWidth: 0
+}
+
 export default createStore({
-    state: {
-        today: dayjs(),
-        leftNavigationStatus: false,
-        windowWidth: 0
-    },
+    state,
     getters: {
         today: state => state.today,
         leftNavigationStatus: state => state.leftNavigationStatus,
@@ -35,6 +41,6 @@ export default createStore({
         }
     },
     modules: {
-        motel
+        motelModule
     }
 })
