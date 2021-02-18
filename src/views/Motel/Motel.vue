@@ -1,12 +1,13 @@
 <template>
     <div class="home">
-        <img alt="Vue logo" src="../../assets/logo.png">
+        <h3>Motel Search</h3>
+
     </div>
 </template>
 
 <script lang="ts">
 import {
-    defineComponent, computed
+    defineComponent, computed, ref
 } from 'vue'
 import {
     useStore
