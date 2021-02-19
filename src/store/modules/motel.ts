@@ -32,26 +32,51 @@ const actions: ActionTree<MotelModule.State, RootState> = {
     async getMotelList ({ commit }) {
         try {
             const { data: rawData } = await motelDatabaseAPIs.getMotelList()
-            const result: Array<MotelModule.OneMotelData> = rawData.feed.entry.map((d: { [index: string]: MotelModule.CellContent }) => {
+            const cityIdList = [...new Set(rawData.feed.entry.map((d: { [index: string]: MotelModule.CellContent }) => d.gsx$cityid.$t))].sort() as Array<string>
+            const result = [] as Array<MotelModule.GetMotelListReturnValue>
+
+            const initialObjects: Array<MotelModule.OneMotelData> = rawData.feed.entry.map((d: { [index: string]: MotelModule.CellContent }) => {
                 const newObject: MotelModule.OneMotelData = {
                     id: undefined,
                     name: undefined,
-                    address: {
-                        full: undefined,
-                        city: undefined,
-                        area: undefined,
-                        zip: undefined
-                    },
+                    addressFull: undefined,
+                    city: undefined,
+                    area: undefined,
+                    zip: undefined,
+                    cityId: undefined,
                     tel: undefined
                 }
-                const filledKey = ['id', 'addressarea', 'addresscity', 'addressfull', 'addresszip', 'name', 'tel']
+                const filledKey = Object.keys(newObject)
                 filledKey.forEach((key: string) => {
-                    key.includes('address')
-                        ? newObject.address[`${key.slice(7, key.length)}`] = d[`gsx$address${key.slice(7, key.length)}`].$t
-                        : newObject[`${key}`] = d[`gsx$${key}`].$t
+                    newObject[`${key}`] = d[`gsx$${key.toLowerCase()}`].$t
                 })
                 return newObject
             })
+
+            cityIdList.forEach((id: string) => {
+                result.push({
+                    cityId: id,
+                    label: undefined,
+                    items: []
+                })
+            })
+
+            initialObjects.forEach((d: MotelModule.OneMotelData) => {
+                result.forEach(content => {
+                    if (content.cityId === d.cityId) {
+                        content.items.push({
+                            label: d.name,
+                            value: {
+                                ...d
+                            }
+                        })
+                        if (!content.label) {
+                            content.label = d.city
+                        }
+                    }
+                })
+            })
+
             commit('setMotels', result)
         } catch (err) {
             console.log(err)

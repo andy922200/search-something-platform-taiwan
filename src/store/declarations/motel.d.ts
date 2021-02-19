@@ -15,7 +15,17 @@ export namespace MotelModule {
     interface OneMotelData extends ObjectKeys {
         id: number | string | undefined;
         name: string | undefined;
-        address: ObjectKeys;
+        addressFull: string | undefined;
+        city: undefined;
+        area: undefined;
+        zip: undefined;
+        cityId: string | undefined;
         tel: string | undefined;
+    }
+
+    interface GetMotelListReturnValue{
+        cityId: string | undefined;
+        label: string | undefined;
+        items: Array<{ label: string | undefined; value: OneMotelData}>;
     }
 }
