@@ -7,6 +7,9 @@
             optionLabel="label"
             optionGroupLabel="label"
             optionGroupChildren="items"
+            :filter="true"
+            placeholder="Please Select"
+            @change="selectNewMotel"
         >
             <template #optiongroup="slotProps">
                 <div class="p-d-flex p-ai-center country-item">
@@ -24,6 +27,12 @@ import {
 import {
     useStore
 } from 'vuex'
+import {
+    MotelModule
+} from '../../store/declarations/motel'
+import {
+    debounce
+} from 'lodash'
 
 export default defineComponent({
     name: 'Motel',
@@ -32,12 +41,16 @@ export default defineComponent({
             const store = useStore()
             const selectedMotel = ref({
             })
+            const selectNewMotel = debounce(function (e: {originalEvent: MouseEvent; value: MotelModule.OneMotelData}) {
+                console.log(e.value.value)
+            }, 3000)
 
             store.dispatch('motelModule/getMotelList')
 
             return {
                 motels: computed(() => store.state.motelModule.motels),
-                selectedMotel
+                selectedMotel,
+                selectNewMotel
             }
         } catch (err) {
             console.log(err)
