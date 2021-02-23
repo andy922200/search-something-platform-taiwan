@@ -1,0 +1,14 @@
+.sidebar__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .sidebar__headerTitle {
+        margin: 10px 0;
+    }
+
+    .sidebar__cancelBtn {
+        width: 30px;
+        height: 30px;
+    }
+}

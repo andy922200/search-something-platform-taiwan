@@ -9,6 +9,8 @@ import store from './store'
 import PrimeVue from 'primevue/config'
 import Button from 'primevue/button'
 import Dropdown from 'primevue/dropdown'
+import Toolbar from 'primevue/toolbar'
+import Sidebar from 'primevue/sidebar'
 // import PrimeVue && other modules end
 
 import 'normalize.css'
@@ -19,9 +21,10 @@ import 'primevue/resources/primevue.min.css'
 import 'primeflex/primeflex.css'
 
 const app = createApp(App)
-
-app.use(store).use(router).use(PrimeVue).mount('#app')
-
 // register PrimeVue Components
 app.component('Button', Button)
 app.component('Dropdown', Dropdown)
+app.component('Toolbar', Toolbar)
+app.component('Sidebar', Sidebar)
+
+app.use(store).use(router).use(PrimeVue).mount('#app')
