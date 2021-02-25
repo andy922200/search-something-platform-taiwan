@@ -17,12 +17,15 @@
                 </div>
             </template>
         </Dropdown>
+        <div class="motelMap__wrapper">
+            <div id="motelMap" ref="motelMap"></div>
+        </div>
     </div>
 </template>
 
 <script lang="ts">
 import {
-    defineComponent, computed, ref
+    defineComponent, computed, onMounted, ref
 } from 'vue'
 import {
     useStore
@@ -34,6 +37,10 @@ import {
     debounce
 } from 'lodash'
 
+import {
+    generateNewMap
+} from '../../utils/openLayer'
+
 export default defineComponent({
     name: 'Motel',
     async setup () {
@@ -44,6 +51,10 @@ export default defineComponent({
             const selectNewMotel = debounce(function (e: {originalEvent: MouseEvent; value: MotelModule.OneMotelData}) {
                 console.log(e.value.value)
             }, 3000)
+
+            onMounted(() => {
+                generateNewMap('motelMap')
+            })
 
             store.dispatch('motelModule/getMotelList')
 

@@ -2,4 +2,16 @@
     .dropdown--custom {
         min-width: 300px;
     }
+
+    .motelMap__wrapper {
+        display: flex;
+        justify-content: center;
+        padding: 20px 0;
+    }
+
+    #motelMap {
+        width: 100%;
+        min-width: 320px;
+        height: 569px;
+    }
 }

@@ -14,10 +14,12 @@
     "test-e2e": "testcafe chrome ./**/*.e2e.test.ts --app \"npm run serve\" --app-init-delay 1000 -S -s screenshots"
   },
   "dependencies": {
+    "@types/ol": "^6.4.2",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "dayjs": "^1.10.4",
     "normalize.css": "^8.0.1",
+    "ol": "^6.5.0",
     "primeflex": "^2.0.0",
     "primeicons": "^4.1.0",
     "primevue": "^3.3.0-rc.1",
