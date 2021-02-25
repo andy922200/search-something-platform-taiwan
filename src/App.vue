@@ -2,11 +2,6 @@
     <div class="p-grid">
         <div class="p-col-12">
             <Navbar />
-            <div id="nav">
-                <router-link to="/">Home</router-link> |
-                <router-link to="/about">About</router-link> |
-                <router-link to="/demo">Demo</router-link>
-            </div>
         </div>
         <Suspense>
             <template #default>

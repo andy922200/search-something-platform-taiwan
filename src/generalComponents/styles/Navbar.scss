@@ -1,3 +1,22 @@
+.navbar {
+    /deep/ .p-toolbar-group-left {
+        width: 100%;
+
+        .area {
+            width: 33.33333%;
+
+            &:first-child {
+                text-align: left;
+            }
+
+            &:last-child {
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+    }
+}
+
 .sidebar__header {
     display: flex;
     justify-content: space-between;
@@ -10,5 +29,19 @@
     .sidebar__cancelBtn {
         width: 30px;
         height: 30px;
+    }
+}
+
+.sidebar__body {
+    a {
+        display: inline-block;
+        margin: 10px 0;
+        width: 100%;
+        color: #2c3e50;
+        font-weight: bold;
+    }
+
+    .router-link-active {
+        color: #42b983;
     }
 }

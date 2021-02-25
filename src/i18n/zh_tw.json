@@ -1,0 +1,11 @@
+{
+    "general":{
+        "PleaseSelect":"請選擇"
+    },
+    "about": {
+        "title": "這是關於頁"
+    },
+    "navbar": {
+        "title": "台灣摩鐵 QK 搜尋"
+    }
+}

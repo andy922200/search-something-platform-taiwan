@@ -1,14 +1,14 @@
 <template>
-    <div class="home">
-        <h3>Motel Search</h3>
+    <div class="motel">
         <Dropdown
+            class="dropdown--custom"
             v-model="selectedMotel"
             :options="motels"
             optionLabel="label"
             optionGroupLabel="label"
             optionGroupChildren="items"
             :filter="true"
-            placeholder="Please Select"
+            :placeholder="$t('general.PleaseSelect')"
             @change="selectNewMotel"
         >
             <template #optiongroup="slotProps">
@@ -58,3 +58,5 @@ export default defineComponent({
     }
 })
 </script>
+
+<style lang="scss" scoped src="./styles/Motel.scss"></style>

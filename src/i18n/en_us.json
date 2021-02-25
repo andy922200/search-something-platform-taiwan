@@ -1,0 +1,11 @@
+{
+    "general": {
+        "PleaseSelect": "Please Select"
+    },
+    "about": {
+        "title": "This is an about page."
+    },
+    "navbar":{
+        "title": "Motel Search in Taiwan"
+    }
+}

@@ -4,6 +4,7 @@ import {
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import VueI18n from './i18n/entry'
 
 // import PrimeVue && other modules start
 import PrimeVue from 'primevue/config'
@@ -21,6 +22,8 @@ import 'primevue/resources/primevue.min.css'
 import 'primeflex/primeflex.css'
 
 const app = createApp(App)
+app.provide('rootVueInstance', app)
+app.use(VueI18n)
 // register PrimeVue Components
 app.component('Button', Button)
 app.component('Dropdown', Dropdown)

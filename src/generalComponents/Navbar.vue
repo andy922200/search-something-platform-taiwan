@@ -6,44 +6,87 @@
                 :showCloseIcon="false"
             >
                 <div class="sidebar__header">
-                    <h5 class="sidebar__headerTitle">Content</h5>
+                    <h3 class="sidebar__headerTitle">Content</h3>
                     <Button
                         icon="pi pi-times"
                         class="sidebar__cancelBtn p-button-danger"
                         @click="triggerLeftNavigation(leftNavigationStatus !== leftNavigationStatus)"
                     />
                 </div>
+                <div class="sidebar__body">
+                    <router-link to="/" @click="triggerLeftNavigation(false, $event)">Home</router-link>
+                    <router-link to="/about" @click="triggerLeftNavigation(false, $event)">About</router-link>
+                </div>
             </Sidebar>
-            <i
-                class="pi pi-bars p-toolbar-separator p-mr-2"
-                @click="triggerLeftNavigation(true)"
-            />
-        </template>
-
-        <template #right>
-            <Button icon="pi pi-search" class="p-mr-2" />
+            <div class="area">
+                <i
+                    class="pi pi-bars p-toolbar-separator p-mr-2"
+                    @click="triggerLeftNavigation(true)"
+                />
+            </div>
+            <div class="area">
+                <h3>{{$t("navbar.title")}}</h3>
+            </div>
+            <div class="area">
+                <Dropdown
+                    v-model="selectedLanguageModel"
+                    :options="LayoutLanguages"
+                    optionLabel="title"
+                    optionValue="param"
+                    placeholder="Select a Language"
+                />
+            </div>
         </template>
     </Toolbar>
 </template>
 
 <script lang="ts">
 import {
-    defineComponent, computed
+    defineComponent, computed, inject, DefineComponent
 } from 'vue'
+
+import {
+    useRouter
+} from 'vue-router'
+
 import {
     useStore
 } from 'vuex'
+
+import {
+    LayoutLanguages
+} from '@/i18n/config/locales'
 
 export default defineComponent({
     name: 'Navbar',
     setup () {
         const store = useStore()
-        const triggerLeftNavigation = (status: boolean) =>
-            store.dispatch('triggerLeftNavigation', status)
+        const router = useRouter()
+        const root = inject('rootVueInstance') as DefineComponent
 
+        const triggerLeftNavigation = (status: boolean, $event?: MouseEvent) => {
+            if ($event) {
+                $event.preventDefault()
+                router.push({
+                    path: `${($event.target as unknown as HTMLHyperlinkElementUtils).pathname}`
+                })
+            }
+            store.dispatch('triggerLeftNavigation', status)
+        }
         return {
             leftNavigationStatus: computed(() => store.getters.leftNavigationStatus),
-            triggerLeftNavigation
+            triggerLeftNavigation,
+            selectedLanguageModel: computed({
+                get () {
+                    return store.getters.selectedLanguage
+                },
+                set (value: string) {
+                    root.__VUE_I18N__.global.locale = value
+                    store.dispatch('selectNewDefaultLanguage', value)
+                }
+            }),
+            test: computed(() => store.getters.selectedLanguage),
+            LayoutLanguages
         }
     }
 })
