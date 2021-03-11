@@ -44,11 +44,17 @@ const actions: ActionTree<MotelModule.State, RootState> = {
                     area: undefined,
                     zip: undefined,
                     cityId: undefined,
-                    tel: undefined
+                    tel: undefined,
+                    latitude: undefined,
+                    longitude: undefined
                 }
                 const filledKey = Object.keys(newObject)
                 filledKey.forEach((key: string) => {
-                    newObject[`${key}`] = d[`gsx$${key.toLowerCase()}`].$t
+                    if (key === 'latitude' || key === 'longitude') {
+                        newObject[`${key}`] = Number(d[`gsx$${key.toLowerCase()}`].$t)
+                    } else {
+                        newObject[`${key}`] = d[`gsx$${key.toLowerCase()}`].$t
+                    }
                 })
                 return newObject
             })

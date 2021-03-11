@@ -21,6 +21,8 @@ export namespace MotelModule {
         zip: undefined;
         cityId: string | undefined;
         tel: string | undefined;
+        latitude: number | undefined;
+        longitude: number | undefined;
     }
 
     interface GetMotelListReturnValue{

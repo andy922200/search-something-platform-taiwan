@@ -9,7 +9,7 @@
             optionGroupChildren="items"
             :filter="true"
             :placeholder="$t('general.PleaseSelect')"
-            @change="selectNewMotel"
+            @change="methodSelectNewMotel"
         >
             <template #optiongroup="slotProps">
                 <div class="p-d-flex p-ai-center country-item">
@@ -18,7 +18,11 @@
             </template>
         </Dropdown>
         <div class="motelMap__wrapper">
-            <div id="motelMap" ref="motelMap"></div>
+            <div id="motelMap" ref="motelMap">
+                <div class="motelMap__popup">
+                    <div class="motelMap__popupContent"></div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -36,6 +40,9 @@ import {
 import {
     debounce
 } from 'lodash'
+import {
+    Map
+} from 'ol'
 
 import {
     generateNewMap
@@ -43,25 +50,41 @@ import {
 
 export default defineComponent({
     name: 'Motel',
-    async setup () {
+    setup () {
         try {
             const store = useStore()
             const selectedMotel = ref({
             })
-            const selectNewMotel = debounce(function (e: {originalEvent: MouseEvent; value: MotelModule.OneMotelData}) {
-                console.log(e.value.value)
-            }, 3000)
+            let map = undefined as Map | undefined
 
-            onMounted(() => {
-                generateNewMap('motelMap')
+            onMounted(async () => {
+                await store.dispatch('motelModule/getMotelList')
+                const defaultMotel: MotelModule.OneMotelData = store.state.motelModule.motels[0].items[0]
+                selectedMotel.value = defaultMotel
+                map = generateNewMap('motelMap', defaultMotel.value as MotelModule.OneMotelData)
             })
 
-            store.dispatch('motelModule/getMotelList')
+            const methodSelectNewMotel = debounce(
+                function (e: {originalEvent: MouseEvent; value: MotelModule.OneMotelData}) {
+                    const selectedMotel = e.value.value as MotelModule.OneMotelData
+                    if (map) {
+                        const motelMapDom = document.querySelector('#motelMap')
+                        map.dispose()
+                        if (motelMapDom) {
+                            motelMapDom.innerHTML = `
+                            <div class="motelMap__popup">
+                                <div class="motelMap__popupContent"></div>
+                            </div>
+                        `
+                        }
+                        map = generateNewMap('motelMap', selectedMotel)
+                    }
+                }, 3000)
 
             return {
                 motels: computed(() => store.state.motelModule.motels),
                 selectedMotel,
-                selectNewMotel
+                methodSelectNewMotel
             }
         } catch (err) {
             console.log(err)

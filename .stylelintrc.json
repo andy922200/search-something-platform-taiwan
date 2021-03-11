@@ -9,6 +9,7 @@
         "max-nesting-depth": 3,
         "selector-max-id": 2,
         "indentation": 4,
+        "selector-max-compound-selectors":4,
         "order/properties-alphabetical-order": null,
         "order/properties-order": [
             "position",
