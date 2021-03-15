@@ -6,6 +6,10 @@
         "title": "這是關於頁"
     },
     "navbar": {
+        "sidebar": {
+            "taiwanMotelSearch": "台灣摩鐵 QK 搜尋",
+            "about": "關於"
+        },
         "title": "台灣摩鐵 QK 搜尋"
     }
 }

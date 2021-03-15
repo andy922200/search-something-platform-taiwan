@@ -17,13 +17,28 @@
                 </div>
             </template>
         </Dropdown>
+
         <div class="motelMap__wrapper">
-            <div id="motelMap" ref="motelMap">
+            <ProgressSpinner v-if="motelLoadingStatus" />
+            <div id="motelMap" ref="motelMap" v-else>
                 <div class="motelMap__popup">
                     <div class="motelMap__popupContent"></div>
                 </div>
             </div>
         </div>
+
+        <Card class="motelCard__info">
+            <template #header>
+                <i class="pi pi-map-marker" style="font-size: 2rem;"></i>
+            </template>
+            <template #title>
+                {{selectedMotel.value ? selectedMotel.value.name : ""}}
+            </template>
+            <template #content>
+                <p>{{selectedMotel.value ? selectedMotel.value.addressFull : ""}}</p>
+                <p>{{selectedMotel.value ? selectedMotel.value.tel : ""}}</p>
+            </template>
+        </Card>
     </div>
 </template>
 
@@ -70,6 +85,7 @@ export default defineComponent({
                     if (map) {
                         const motelMapDom = document.querySelector('#motelMap')
                         map.dispose()
+                        store.commit('motelModule/setLoadingStatus', true)
                         if (motelMapDom) {
                             motelMapDom.innerHTML = `
                             <div class="motelMap__popup">
@@ -78,11 +94,13 @@ export default defineComponent({
                         `
                         }
                         map = generateNewMap('motelMap', selectedMotel)
+                        store.commit('motelModule/setLoadingStatus', false)
                     }
-                }, 3000)
+                }, 1000)
 
             return {
                 motels: computed(() => store.state.motelModule.motels),
+                motelLoadingStatus: computed(() => store.state.motelModule.loadingStatus),
                 selectedMotel,
                 methodSelectNewMotel
             }

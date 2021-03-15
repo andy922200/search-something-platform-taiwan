@@ -6,6 +6,10 @@
         "title": "这是关于页"
     },
     "navbar": {
+        "sidebar": {
+            "taiwanMotelSearch": "台湾汽车旅馆搜寻",
+            "about": "关于"
+        },
         "title": "台湾汽车旅馆搜寻"
     }
 }

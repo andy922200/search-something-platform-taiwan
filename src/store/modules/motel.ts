@@ -15,22 +15,29 @@ import {
 } from '../declarations/motel'
 
 const state: MotelModule.State = {
-    motels: []
+    motels: [],
+    loadingStatus: false
 }
 
 const getters: GetterTree<MotelModule.State, RootState> = {
-    motels: (state: MotelModule.State) => state.motels
+    motels: (state: MotelModule.State) => state.motels,
+    loadingStatus: (state: MotelModule.State) => state.loadingStatus
 }
 
 const mutations: MutationTree<MotelModule.State> = {
     setMotels (state: MotelModule.State, payload: Array<MotelModule.OneMotelData>) {
         state.motels = payload
+    },
+    setLoadingStatus (state: MotelModule.State, payload: boolean) {
+        state.loadingStatus = payload
     }
 }
 
 const actions: ActionTree<MotelModule.State, RootState> = {
     async getMotelList ({ commit }) {
         try {
+            commit('setLoadingStatus', true)
+
             const { data: rawData } = await motelDatabaseAPIs.getMotelList()
             const cityIdList = [...new Set(rawData.feed.entry.map((d: { [index: string]: MotelModule.CellContent }) => d.gsx$cityid.$t))].sort() as Array<string>
             const result = [] as Array<MotelModule.GetMotelListReturnValue>
@@ -84,6 +91,7 @@ const actions: ActionTree<MotelModule.State, RootState> = {
             })
 
             commit('setMotels', result)
+            commit('setLoadingStatus', false)
         } catch (err) {
             console.log(err)
         }

@@ -61,7 +61,9 @@ function generateNewMap (targetDom: string, motel: MotelModule.OneMotelData) {
         view: new View({
             projection: 'EPSG:4326',
             center: [longitude, latitude],
-            zoom: 16
+            zoom: 16,
+            minZoom: 13,
+            maxZoom: 19
         })
     })
 

@@ -1,6 +1,7 @@
 export namespace MotelModule {
     type State = {
         motels: Array<OneMotelData>;
+        loadingStatus: boolean;
     }
 
     interface ObjectKeys {

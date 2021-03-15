@@ -4,6 +4,7 @@
             <Sidebar
                 :visible="leftNavigationStatus"
                 :showCloseIcon="false"
+                class="sidebar"
             >
                 <div class="sidebar__header">
                     <h3 class="sidebar__headerTitle">Content</h3>
@@ -14,8 +15,12 @@
                     />
                 </div>
                 <div class="sidebar__body">
-                    <router-link to="/" @click="triggerLeftNavigation(false, $event)">Home</router-link>
-                    <router-link to="/about" @click="triggerLeftNavigation(false, $event)">About</router-link>
+                    <router-link to="/" @click="triggerLeftNavigation(false, $event)">
+                        {{$t("navbar.sidebar.taiwanMotelSearch")}}
+                    </router-link>
+                    <router-link to="/about" @click="triggerLeftNavigation(false, $event)">
+                        {{$t("navbar.sidebar.about")}}
+                    </router-link>
                 </div>
             </Sidebar>
             <div class="area">

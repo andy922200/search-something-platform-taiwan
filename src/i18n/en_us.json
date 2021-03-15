@@ -6,6 +6,10 @@
         "title": "This is an about page."
     },
     "navbar":{
-        "title": "Motel Search in Taiwan"
+        "sidebar":{
+            "taiwanMotelSearch":"Taiwan Motel Search",
+            "about":"About"
+        },
+        "title": "Taiwan Motel Search"
     }
 }

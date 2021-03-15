@@ -9,9 +9,11 @@ import VueI18n from './i18n/entry'
 // import PrimeVue && other modules start
 import PrimeVue from 'primevue/config'
 import Button from 'primevue/button'
+import Card from 'primevue/card'
 import Dropdown from 'primevue/dropdown'
 import Toolbar from 'primevue/toolbar'
 import Sidebar from 'primevue/sidebar'
+import ProgressSpinner from 'primevue/progressspinner'
 // import PrimeVue && other modules end
 
 import 'normalize.css'
@@ -26,8 +28,10 @@ app.provide('rootVueInstance', app)
 app.use(VueI18n)
 // register PrimeVue Components
 app.component('Button', Button)
+app.component('Card', Card)
 app.component('Dropdown', Dropdown)
 app.component('Toolbar', Toolbar)
 app.component('Sidebar', Sidebar)
+app.component('ProgressSpinner', ProgressSpinner)
 
 app.use(store).use(router).use(PrimeVue).mount('#app')

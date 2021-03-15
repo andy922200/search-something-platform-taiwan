@@ -3,18 +3,9 @@
         <div class="p-col-12">
             <Navbar />
         </div>
-        <Suspense>
-            <template #default>
-                <div class="p-col-12">
-                    <router-view />
-                </div>
-            </template>
-            <template #fallback>
-                <div class="p-col-12">
-                    <p>Loading...</p>
-                </div>
-            </template>
-        </Suspense>
+        <div class="p-col-12">
+            <router-view />
+        </div>
     </div>
 </template>
 
