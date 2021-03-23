@@ -47,7 +47,7 @@
 
 <script lang="ts">
 import {
-    defineComponent, computed, inject, DefineComponent
+    defineComponent, computed
 } from 'vue'
 
 import {
@@ -61,13 +61,16 @@ import {
 import {
     LayoutLanguages
 } from '@/i18n/config/locales'
+import {
+    useI18n
+} from 'vue-i18n'
 
 export default defineComponent({
     name: 'Navbar',
     setup () {
         const store = useStore()
         const router = useRouter()
-        const root = inject('rootVueInstance') as DefineComponent
+        const { locale } = useI18n()
 
         const triggerLeftNavigation = (status: boolean, $event?: MouseEvent) => {
             if ($event) {
@@ -78,6 +81,7 @@ export default defineComponent({
             }
             store.dispatch('triggerLeftNavigation', status)
         }
+
         return {
             leftNavigationStatus: computed(() => store.getters.leftNavigationStatus),
             triggerLeftNavigation,
@@ -86,7 +90,7 @@ export default defineComponent({
                     return store.getters.selectedLanguage
                 },
                 set (value: string) {
-                    root.__VUE_I18N__.global.locale = value
+                    locale.value = value
                     store.dispatch('selectNewDefaultLanguage', value)
                 }
             }),
