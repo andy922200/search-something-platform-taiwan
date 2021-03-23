@@ -1,5 +1,7 @@
 module.exports = {
-    publicPath: './',
+    publicPath: process.env.NODE_ENV === 'production'
+        ? '/search-something-platform-taiwan/'
+        : '/',
     css: {
         extract: process.env.NODE_ENV !== 'production' ? undefined : {
             filename: '[name].css',
@@ -24,8 +26,5 @@ module.exports = {
     // devServer: {
     //     proxy: 'http://localhost:4000'
     // },
-    productionSourceMap: false,
-    transpileDependencies: [
-        'element-plus'
-    ]
+    productionSourceMap: false
 }
