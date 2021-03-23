@@ -27,7 +27,6 @@ import 'primevue/resources/primevue.min.css'
 import 'primeflex/primeflex.css'
 
 const app = createApp(App)
-app.provide('rootVueInstance', app)
 app.use(VueI18n)
 // register PrimeVue Components
 app.component('Button', Button)
