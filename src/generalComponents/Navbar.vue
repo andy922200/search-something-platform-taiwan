@@ -7,7 +7,7 @@
                 class="sidebar"
             >
                 <div class="sidebar__header">
-                    <h3 class="sidebar__headerTitle">Content</h3>
+                    <h3 class="sidebar__headerTitle">{{$t("navbar.content")}}</h3>
                     <Button
                         icon="pi pi-times"
                         class="sidebar__cancelBtn p-button-danger"

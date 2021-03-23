@@ -1,11 +1,19 @@
 {
     "general": {
-        "PleaseSelect": "请选择"
+        "PleaseSelect": "请选择",
+        "MultiSelectHeader": "请选择选项 ( 至多 3 个 )",
+        "Close": "关闭",
+        "Name": "名称",
+        "City": "县市",
+        "Area": "乡镇市区",
+        "Address": "完整地址",
+        "Tel": "电话"
     },
     "about": {
         "title": "这是关于页"
     },
     "navbar": {
+        "content": "内容",
         "sidebar": {
             "taiwanMotelSearch": "台湾汽车旅馆搜寻",
             "about": "关于"

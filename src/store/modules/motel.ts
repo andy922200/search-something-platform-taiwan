@@ -16,17 +16,27 @@ import {
 
 const state: MotelModule.State = {
     motels: [],
+    motelsForSelector: [],
+    areaList: [],
     loadingStatus: false
 }
 
 const getters: GetterTree<MotelModule.State, RootState> = {
     motels: (state: MotelModule.State) => state.motels,
+    motelsForSelector: (state: MotelModule.State) => state.motelsForSelector,
+    areaList: (state: MotelModule.State) => state.areaList,
     loadingStatus: (state: MotelModule.State) => state.loadingStatus
 }
 
 const mutations: MutationTree<MotelModule.State> = {
     setMotels (state: MotelModule.State, payload: Array<MotelModule.OneMotelData>) {
         state.motels = payload
+    },
+    setMotelsForSelector (state: MotelModule.State, payload: Array<MotelModule.GetMotelListReturnValue>) {
+        state.motelsForSelector = payload
+    },
+    setAreaList (state: MotelModule.State, payload: Array<MotelModule.AreaOption>) {
+        state.areaList = payload
     },
     setLoadingStatus (state: MotelModule.State, payload: boolean) {
         state.loadingStatus = payload
@@ -40,7 +50,8 @@ const actions: ActionTree<MotelModule.State, RootState> = {
 
             const { data: rawData } = await motelDatabaseAPIs.getMotelList()
             const cityIdList = [...new Set(rawData.feed.entry.map((d: { [index: string]: MotelModule.CellContent }) => d.gsx$cityid.$t))].sort() as Array<string>
-            const result = [] as Array<MotelModule.GetMotelListReturnValue>
+            const resultForSelector = [] as Array<MotelModule.GetMotelListReturnValue>
+            const areaList = [] as Array<MotelModule.AreaOption>
 
             const initialObjects: Array<MotelModule.OneMotelData> = rawData.feed.entry.map((d: { [index: string]: MotelModule.CellContent }) => {
                 const newObject: MotelModule.OneMotelData = {
@@ -64,10 +75,10 @@ const actions: ActionTree<MotelModule.State, RootState> = {
                     }
                 })
                 return newObject
-            })
+            }).sort((a, b) => a.cityId > b.cityId ? 1 : -1)
 
             cityIdList.forEach((id: string) => {
-                result.push({
+                resultForSelector.push({
                     cityId: id,
                     label: undefined,
                     items: []
@@ -75,7 +86,14 @@ const actions: ActionTree<MotelModule.State, RootState> = {
             })
 
             initialObjects.forEach((d: MotelModule.OneMotelData) => {
-                result.forEach(content => {
+                if (areaList.findIndex(area => area.value === d.zip) === -1) {
+                    areaList.push({
+                        label: d.area ? d.area : '',
+                        value: d.zip ? d.zip : ''
+                    })
+                }
+
+                resultForSelector.forEach(content => {
                     if (content.cityId === d.cityId) {
                         content.items.push({
                             label: d.name,
@@ -90,7 +108,11 @@ const actions: ActionTree<MotelModule.State, RootState> = {
                 })
             })
 
-            commit('setMotels', result)
+            areaList.sort((a, b) => a.value > b.value ? 1 : -1)
+
+            commit('setAreaList', areaList)
+            commit('setMotels', initialObjects)
+            commit('setMotelsForSelector', resultForSelector)
             commit('setLoadingStatus', false)
         } catch (err) {
             console.log(err)

@@ -1,13 +1,25 @@
 .motel {
+    .dropdown__wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .dropdown--custom {
         min-width: 300px;
+    }
+
+    .motel__info {
+        margin: 10px 0;
     }
 
     .motelMap__wrapper {
         position: relative;
         display: flex;
         justify-content: center;
-        padding: 20px 0;
+        padding: 10px 0 20px;
+        margin: 0 auto;
+        max-width: 800px;
     }
 
     #motelMap {

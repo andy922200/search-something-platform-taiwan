@@ -1,6 +1,8 @@
 export namespace MotelModule {
     type State = {
         motels: Array<OneMotelData>;
+        motelsForSelector: Array<GetMotelListReturnValue>;
+        areaList: Array<AreaOption>;
         loadingStatus: boolean;
     }
 
@@ -17,13 +19,18 @@ export namespace MotelModule {
         id: number | string | undefined;
         name: string | undefined;
         addressFull: string | undefined;
-        city: undefined;
-        area: undefined;
-        zip: undefined;
+        city: string | undefined;
+        area: string | undefined;
+        zip: string | undefined;
         cityId: string | undefined;
         tel: string | undefined;
         latitude: number | undefined;
         longitude: number | undefined;
+    }
+
+    interface AreaOption extends ObjectKeys{
+        label: string;
+        value: string;
     }
 
     interface GetMotelListReturnValue{

@@ -1,11 +1,19 @@
 {
     "general": {
-        "PleaseSelect": "Please Select"
+        "PleaseSelect": "Please Select",
+        "MultiSelectHeader":"Please Select Options ( Max: 3 )",
+        "Close":"Close",
+        "Name": "Name",
+        "City": "City",
+        "Area": "Area",
+        "Address": "Address",
+        "Tel": "Tel"
     },
     "about": {
         "title": "This is an about page."
     },
     "navbar":{
+        "content":"Content",
         "sidebar":{
             "taiwanMotelSearch":"Taiwan Motel Search",
             "about":"About"
