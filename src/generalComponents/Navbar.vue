@@ -73,7 +73,7 @@ export default defineComponent({
             if ($event) {
                 $event.preventDefault()
                 router.push({
-                    path: `${($event.target as unknown as HTMLHyperlinkElementUtils).pathname}`
+                    path: `${($event.target as unknown as HTMLHyperlinkElementUtils).hash.split('#')[1]}`
                 })
             }
             store.dispatch('triggerLeftNavigation', status)
