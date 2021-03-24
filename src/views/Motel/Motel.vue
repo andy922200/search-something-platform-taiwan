@@ -49,8 +49,54 @@
                     selectionMode="single"
                     @row-select="methodSelectNewMotelFromDataTable"
                 >
-                    <Column field="name" :header="$t('general.Name')"></Column>
-                    <Column field="city" :header="$t('general.City')"></Column>
+                    <Column
+                        field="name"
+                        :header="$t('general.Name')"
+                        :showApplyButton="false"
+                        :showFilterMenu="true"
+                        :showFilterMatchModes="false"
+                    >
+                        <template #body="{data}">
+                            {{data.name}}
+                        </template>
+                        <template #filter="{filterCallback}">
+                            <InputText
+                                type="text"
+                                v-model="filterRules.name.value"
+                                @keydown.enter="filterCallback()"
+                                class="p-column-filter"
+                                :placeholder="`Search by name`"
+                            >
+                            </InputText>
+                        </template>
+                        <template #filterclear="{filterCallback}">
+                            <Button type="button" @click="filterCallback()" :label="$t('general.Close')" class="p-button-danger"></Button>
+                        </template>
+                    </Column>
+                    <Column
+                        field="city"
+                        :header="$t('general.City')"
+                        :showApplyButton="false"
+                        :showFilterMenu="true"
+                        :showFilterMatchModes="false"
+                    >
+                        <template #body="{data}">
+                            {{data.city}}
+                        </template>
+                        <template #filter="{filterCallback}">
+                            <InputText
+                                type="text"
+                                v-model="filterRules.city.value"
+                                @keydown.enter="filterCallback()"
+                                class="p-column-filter"
+                                :placeholder="`Search by City`"
+                            >
+                            </InputText>
+                        </template>
+                        <template #filterclear="{filterCallback}">
+                            <Button type="button" @click="filterCallback()" :label="$t('general.Close')" class="p-button-danger"></Button>
+                        </template>
+                    </Column>
                     <Column
                         field="area"
                         :header="$t('general.Area')"
@@ -180,6 +226,14 @@ export default defineComponent({
                     value: undefined,
                     areaList,
                     matchMode: FilterMatchMode.IN
+                },
+                city: {
+                    value: undefined,
+                    matchMode: FilterMatchMode.STARTS_WITH
+                },
+                name: {
+                    value: undefined,
+                    matchMode: FilterMatchMode.STARTS_WITH
                 }
             })
             const limitMaximumSelect = (e: {originalEvent: MouseEvent; value: Array<string>}) => {

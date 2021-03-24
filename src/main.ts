@@ -15,8 +15,10 @@ import Toolbar from 'primevue/toolbar'
 import Sidebar from 'primevue/sidebar'
 import ProgressSpinner from 'primevue/progressspinner'
 import MultiSelect from 'primevue/multiselect'
+import InputText from 'primevue/inputtext'
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
+import ScrollTop from 'primevue/scrolltop'
 // import PrimeVue && other modules end
 
 import 'normalize.css'
@@ -36,7 +38,9 @@ app.component('Toolbar', Toolbar)
 app.component('Sidebar', Sidebar)
 app.component('ProgressSpinner', ProgressSpinner)
 app.component('MultiSelect', MultiSelect)
+app.component('InputText', InputText)
 app.component('DataTable', DataTable)
 app.component('Column', Column)
+app.component('ScrollTop', ScrollTop)
 
 app.use(store).use(router).use(PrimeVue).mount('#app')
