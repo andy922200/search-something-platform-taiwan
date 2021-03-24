@@ -6,6 +6,7 @@
         <div class="p-col-12">
             <router-view />
         </div>
+        <ScrollTop />
     </div>
 </template>
 
