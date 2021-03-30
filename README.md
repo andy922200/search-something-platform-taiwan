@@ -11,7 +11,11 @@
 ## About this project 
 <p>This Project includes the following modules:</p>
 <ul>
-    <li>Taiwan Motel Map</li>
+    <li>
+        <a href="https://andy922200.github.io/search-something-platform-taiwan">
+            Taiwan Motel Map
+        </a>
+    </li>
     <li>... update soon</li>
 </ul>
 

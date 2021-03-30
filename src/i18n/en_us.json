@@ -1,5 +1,5 @@
 {
-    "general": {
+    "Motel": {
         "PleaseSelect": "Please Select",
         "MultiSelectHeader":"Please Select Options ( Max: 3 )",
         "Close":"Close",
@@ -7,17 +7,18 @@
         "City": "City",
         "Area": "Area",
         "Address": "Address",
-        "Tel": "Tel"
+        "Tel": "Tel",
+        "title": "Taiwan Motel Search"
     },
-    "about": {
-        "title": "This is an about page."
+    "About": {
+        "title": "About",
+        "content": "About Content"
     },
-    "navbar":{
+    "Navbar":{
         "content":"Content",
         "sidebar":{
             "taiwanMotelSearch":"Taiwan Motel Search",
             "about":"About"
-        },
-        "title": "Taiwan Motel Search"
+        }
     }
 }
