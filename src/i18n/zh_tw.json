@@ -1,5 +1,5 @@
 {
-    "general":{
+    "Motel":{
         "PleaseSelect":"請選擇",
         "MultiSelectHeader": "請選擇選項 ( 最多 3 個 )",
         "Close": "關閉",
@@ -7,17 +7,18 @@
         "City":"縣市",
         "Area":"鄉鎮市區",
         "Address":"完整地址",
-        "Tel":"電話"
+        "Tel":"電話",
+        "title": "台灣摩鐵 QK 搜尋"
     },
-    "about": {
-        "title": "這是關於頁"
+    "About": {
+        "title": "關於",
+        "content": "這是關於頁"
     },
-    "navbar": {
+    "Navbar": {
         "content": "內容",
         "sidebar": {
             "taiwanMotelSearch": "台灣摩鐵 QK 搜尋",
-            "about": "關於"
-        },
-        "title": "台灣摩鐵 QK 搜尋"
+            "about": "這是關於頁"
+        }
     }
 }
