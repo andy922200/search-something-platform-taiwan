@@ -27,7 +27,7 @@
             </Sidebar>
             <div class="area">
                 <i
-                    class="pi pi-bars p-toolbar-separator p-mr-2"
+                    class="pi pi-bars p-toolbar-separator p-mr-2 hamburger-icon"
                     @click="triggerLeftNavigation(true)"
                 />
             </div>

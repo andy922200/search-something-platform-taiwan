@@ -18,15 +18,15 @@
     },
     "About": {
         "title": "关于",
-        "content": "关于专案作品",
+        "content": "关于此专案",
         "dataResources": "资料来源",
-        "corePackages": "专案到的核心套件"
+        "corePackages": "专案用到的核心套件"
     },
     "Navbar": {
         "content": "内容",
         "sidebar": {
             "taiwanMotelSearch": "台湾汽车旅馆搜寻",
-            "about": "关于专案作品"
+            "about": "关于此专案"
         }
     }
 }

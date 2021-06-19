@@ -1,6 +1,6 @@
 {
-  "name": "search_something_platform_taiwan",
-  "version": "0.1.0",
+  "name": "Taiwan Motel Search",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
