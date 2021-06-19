@@ -7,7 +7,7 @@
                 class="sidebar"
             >
                 <div class="sidebar__header">
-                    <h3 class="sidebar__headerTitle">{{$t("navbar.content")}}</h3>
+                    <h3 class="sidebar__headerTitle">{{$t("Navbar.content")}}</h3>
                     <Button
                         icon="pi pi-times"
                         class="sidebar__cancelBtn p-button-danger"
@@ -15,11 +15,13 @@
                     />
                 </div>
                 <div class="sidebar__body">
-                    <router-link to="/" @click="triggerLeftNavigation(false, $event)">
-                        {{$t("navbar.sidebar.taiwanMotelSearch")}}
-                    </router-link>
-                    <router-link to="/about" @click="triggerLeftNavigation(false, $event)">
-                        {{$t("navbar.sidebar.about")}}
+                    <router-link
+                        v-for="item in routeList"
+                        :key="item.name"
+                        :to="item.path"
+                        @click="triggerLeftNavigation(false, $event)"
+                    >
+                        {{$t(`Navbar.sidebar.${item.label}`)}}
                     </router-link>
                 </div>
             </Sidebar>
@@ -30,7 +32,7 @@
                 />
             </div>
             <div class="area">
-                <h3>{{$t("navbar.title")}}</h3>
+                <h3>{{selectedPage !== "" ? $t(`${selectedPage}.title`) : ""}}</h3>
             </div>
             <div class="area">
                 <Dropdown
@@ -47,12 +49,16 @@
 
 <script lang="ts">
 import {
-    defineComponent, computed
+    defineComponent, computed, ref, reactive, watch
 } from 'vue'
 
 import {
-    useRouter
+    useRoute, useRouter
 } from 'vue-router'
+
+import {
+    cloneDeep
+} from 'lodash'
 
 import {
     useStore
@@ -69,8 +75,14 @@ export default defineComponent({
     name: 'Navbar',
     setup () {
         const store = useStore()
+        const currentRoute = reactive(useRoute())
         const router = useRouter()
+        const routeList = router.options.routes.filter(route => {
+            const routeName = route.name as string
+            return !routeName.includes('404')
+        })
         const { locale } = useI18n()
+        const selectedPage = ref('')
 
         const triggerLeftNavigation = (status: boolean, $event?: MouseEvent) => {
             if ($event) {
@@ -81,6 +93,12 @@ export default defineComponent({
             }
             store.dispatch('triggerLeftNavigation', status)
         }
+
+        watch(() => cloneDeep(currentRoute), (currentValue) => {
+            if (currentValue.name) {
+                selectedPage.value = currentValue.name as string
+            }
+        })
 
         return {
             leftNavigationStatus: computed(() => store.getters.leftNavigationStatus),
@@ -94,8 +112,9 @@ export default defineComponent({
                     store.dispatch('selectNewDefaultLanguage', value)
                 }
             }),
-            test: computed(() => store.getters.selectedLanguage),
-            LayoutLanguages
+            LayoutLanguages,
+            selectedPage,
+            routeList
         }
     }
 })

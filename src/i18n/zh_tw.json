@@ -1,23 +1,32 @@
 {
-    "general":{
+    "Motel":{
         "PleaseSelect":"請選擇",
-        "MultiSelectHeader": "請選擇選項 ( 最多 3 個 )",
+        "dropdown_search_rule": "地址 / 旅館名稱",
+        "MultiSelectHeader": "請選擇最多 3 個選項",
+        "no_result": "沒有符合結果",
         "Close": "關閉",
         "Name":"名稱",
         "City":"縣市",
         "Area":"鄉鎮市區",
         "Address":"完整地址",
-        "Tel":"電話"
+        "Tel":"電話",
+        "title": "台灣摩鐵 QK 搜尋",
+        "latitude":"緯度",
+        "longitude":"經度",
+        "search_by_name": "輸入名稱",
+        "search_by_city": "輸入城市名"
     },
-    "about": {
-        "title": "這是關於頁"
+    "About": {
+        "title": "關於",
+        "content": "關於專案作品",
+        "dataResources": "資料來源",
+        "corePackages": "專案用到的核心套件"
     },
-    "navbar": {
+    "Navbar": {
         "content": "內容",
         "sidebar": {
             "taiwanMotelSearch": "台灣摩鐵 QK 搜尋",
-            "about": "關於"
-        },
-        "title": "台灣摩鐵 QK 搜尋"
+            "about": "關於專案作品"
+        }
     }
 }

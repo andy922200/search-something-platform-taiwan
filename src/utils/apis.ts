@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const googleSpreadSheetKey = '1DvtdEvXe5Kk8lQhDDHBDv5Dp-WAYWOTd8xvxAmZWA5M'
+const googleSpreadSheetKey = `${process.env.VUE_APP_googleSpreadSheetKey}`
 const baseURL = 'https://spreadsheets.google.com/feeds/list'
 const motelDatabaseURL = `${baseURL}/${googleSpreadSheetKey}`
 

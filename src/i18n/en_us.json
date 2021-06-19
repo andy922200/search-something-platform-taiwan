@@ -1,23 +1,32 @@
 {
-    "general": {
+    "Motel": {
         "PleaseSelect": "Please Select",
+        "dropdown_search_rule":"Address / Motel Name",
         "MultiSelectHeader":"Please Select Options ( Max: 3 )",
+        "no_result":"No Results found",
         "Close":"Close",
         "Name": "Name",
         "City": "City",
         "Area": "Area",
         "Address": "Address",
-        "Tel": "Tel"
+        "Tel": "Tel",
+        "title": "Taiwan Motel Search",
+        "latitude": "latitude",
+        "longitude": "longitude",
+        "search_by_name":"Search by Name",
+        "search_by_city":"Search by City"
     },
-    "about": {
-        "title": "This is an about page."
+    "About": {
+        "title": "About",
+        "content": "About the Project",
+        "dataResources":"Data Resource",
+        "corePackages":"Core Packages in the project"
     },
-    "navbar":{
+    "Navbar":{
         "content":"Content",
         "sidebar":{
             "taiwanMotelSearch":"Taiwan Motel Search",
-            "about":"About"
-        },
-        "title": "Taiwan Motel Search"
+            "about":"About the Project"
+        }
     }
 }

@@ -10,12 +10,23 @@
                 optionGroupLabel="label"
                 optionGroupChildren="items"
                 :filter="true"
-                :placeholder="$t('general.PleaseSelect')"
+                :filterFields="['label','value.addressFull']"
+                :filterPlaceholder="$t('Motel.dropdown_search_rule')"
+                :placeholder="$t('Motel.PleaseSelect')"
+                :emptyFilterMessage="$t('Motel.no_result')"
                 @change="methodSelectNewMotel"
             >
                 <template #optiongroup="slotProps">
                     <div class="p-d-flex p-ai-center country-item">
+                        <i class="pi pi-map"></i>
                         <div>{{slotProps.option.label}}</div>
+                    </div>
+                </template>
+                <template #value="slotProps">
+                    <div class="p-dropdown-car-value">
+                        <div>
+                            <span>{{slotProps.value.label}}</span>
+                        </div>
                     </div>
                 </template>
             </Dropdown>
@@ -23,6 +34,12 @@
 
         <p class="motel__info">{{selectedMotelModel.value ? selectedMotelModel.value.addressFull : ""}}</p>
         <p class="motel__info">{{selectedMotelModel.value ? selectedMotelModel.value.tel : ""}}</p>
+        <p class="motel__info">
+            {{$t('Motel.latitude')}} : {{selectedMotelModel.value ? selectedMotelModel.value.latitude : ""}}
+        </p>
+        <p class="motel__info">
+            {{$t('Motel.longitude')}} : {{selectedMotelModel.value ? selectedMotelModel.value.longitude : ""}}
+        </p>
 
         <div class="motelMap__wrapper">
             <ProgressSpinner v-if="motelLoadingStatus" />
@@ -51,7 +68,7 @@
                 >
                     <Column
                         field="name"
-                        :header="$t('general.Name')"
+                        :header="$t('Motel.Name')"
                         :showApplyButton="false"
                         :showFilterMenu="true"
                         :showFilterMatchModes="false"
@@ -70,12 +87,12 @@
                             </InputText>
                         </template>
                         <template #filterclear="{filterCallback}">
-                            <Button type="button" @click="filterCallback()" :label="$t('general.Close')" class="p-button-danger"></Button>
+                            <Button type="button" @click="filterCallback()" :label="$t('Motel.Close')" class="p-button-danger"></Button>
                         </template>
                     </Column>
                     <Column
                         field="city"
-                        :header="$t('general.City')"
+                        :header="$t('Motel.City')"
                         :showApplyButton="false"
                         :showFilterMenu="true"
                         :showFilterMatchModes="false"
@@ -94,12 +111,12 @@
                             </InputText>
                         </template>
                         <template #filterclear="{filterCallback}">
-                            <Button type="button" @click="filterCallback()" :label="$t('general.Close')" class="p-button-danger"></Button>
+                            <Button type="button" @click="filterCallback()" :label="$t('Motel.Close')" class="p-button-danger"></Button>
                         </template>
                     </Column>
                     <Column
                         field="area"
-                        :header="$t('general.Area')"
+                        :header="$t('Motel.Area')"
                         :showApplyButton="false"
                         :showFilterMenu="true"
                         :showFilterMatchModes="false"
@@ -112,7 +129,7 @@
                                 v-model="filterRules.area.value"
                                 :options="filterRules.area.areaList"
                                 :filter="false"
-                                :placeholder="$t('general.PleaseSelect')"
+                                :placeholder="$t('Motel.PleaseSelect')"
                                 class="p-column-filter"
                                 display="chip"
                                 style="max-width: 300px;"
@@ -127,11 +144,11 @@
                             </MultiSelect>
                         </template>
                         <template #filterclear="{filterCallback}">
-                            <Button type="button" @click="filterCallback()" :label="$t('general.Close')" class="p-button-danger"></Button>
+                            <Button type="button" @click="filterCallback()" :label="$t('Motel.Close')" class="p-button-danger"></Button>
                         </template>
                     </Column>
-                    <Column field="addressFull" :header="$t('general.Address')"></Column>
-                    <Column field="tel" :header="$t('general.Tel')"></Column>
+                    <Column field="addressFull" :header="$t('Motel.Address')"></Column>
+                    <Column field="tel" :header="$t('Motel.Tel')"></Column>
                 </DataTable>
             </template>
 
@@ -249,7 +266,7 @@ export default defineComponent({
                 if (multiSelectHeader && multiSelectPanel) {
                     multiSelectHeader.innerHTML = `
                         <span style="display:block; width:100%">
-                            ${t('general.MultiSelectHeader')}
+                            ${t('Motel.MultiSelectHeader')}
                         </span>
                     `
                 }
