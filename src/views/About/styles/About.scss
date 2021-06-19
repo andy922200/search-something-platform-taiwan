@@ -1,0 +1,22 @@
+.about {
+    .about__packages-list-item-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+
+        .img-wrapper {
+            width: 100%;
+            height: 200px;
+
+            img {
+                margin: 0 auto;
+                max-width: 200px;
+                height: auto;
+            }
+        }
+
+        .about__packages-list-item-name {
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
