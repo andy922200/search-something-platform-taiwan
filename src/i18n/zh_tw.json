@@ -18,7 +18,7 @@
     },
     "About": {
         "title": "關於",
-        "content": "關於專案作品",
+        "content": "關於此專案",
         "dataResources": "資料來源",
         "corePackages": "專案用到的核心套件"
     },
@@ -26,7 +26,7 @@
         "content": "內容",
         "sidebar": {
             "taiwanMotelSearch": "台灣摩鐵 QK 搜尋",
-            "about": "關於專案作品"
+            "about": "關於此專案"
         }
     }
 }

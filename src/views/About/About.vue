@@ -35,8 +35,8 @@ export default defineComponent({
                 imageSrc: require('../../assets/vue-logo.png')
             },
             {
-                name: 'ESLint',
-                imageSrc: require('../../assets/eslint-logo.png')
+                name: 'OpenLayers',
+                imageSrc: require('../../assets/openLayers-logo.png')
             },
             {
                 name: 'Prime Vue',
