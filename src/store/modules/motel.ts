@@ -49,31 +49,23 @@ const actions: ActionTree<MotelModule.State, RootState> = {
             commit('setLoadingStatus', true)
 
             const { data: rawData } = await motelDatabaseAPIs.getMotelList()
-            const cityIdList = [...new Set(rawData.feed.entry.map((d: { [index: string]: MotelModule.CellContent }) => d.gsx$cityid.$t))].sort() as Array<string>
+            const cityIdList = [...new Set(rawData.values.slice(1, rawData.length).map((d: string | number[]) => d[6]))].sort() as Array<string>
             const resultForSelector = [] as Array<MotelModule.GetMotelListReturnValue>
             const areaList = [] as Array<MotelModule.AreaOption>
 
-            const initialObjects: Array<MotelModule.OneMotelData> = rawData.feed.entry.map((d: { [index: string]: MotelModule.CellContent }) => {
+            const initialObjects: Array<MotelModule.OneMotelData> = rawData.values.slice(1, rawData.length).map((d: string & number[]) => {
                 const newObject: MotelModule.OneMotelData = {
-                    id: undefined,
-                    name: undefined,
-                    addressFull: undefined,
-                    city: undefined,
-                    area: undefined,
-                    zip: undefined,
-                    cityId: undefined,
-                    tel: undefined,
-                    latitude: undefined,
-                    longitude: undefined
+                    id: d[0],
+                    name: d[1],
+                    addressFull: d[2],
+                    city: d[3],
+                    area: d[4],
+                    zip: d[5],
+                    cityId: d[6],
+                    tel: d[9],
+                    latitude: d[7],
+                    longitude: d[8]
                 }
-                const filledKey = Object.keys(newObject)
-                filledKey.forEach((key: string) => {
-                    if (key === 'latitude' || key === 'longitude') {
-                        newObject[`${key}`] = Number(d[`gsx$${key.toLowerCase()}`].$t)
-                    } else {
-                        newObject[`${key}`] = d[`gsx$${key.toLowerCase()}`].$t
-                    }
-                })
                 return newObject
             }).sort((a, b) => a.cityId > b.cityId ? 1 : -1)
 
