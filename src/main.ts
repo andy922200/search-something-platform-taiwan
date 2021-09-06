@@ -19,6 +19,7 @@ import InputText from 'primevue/inputtext'
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
 import ScrollTop from 'primevue/scrolltop'
+import Panel from 'primevue/panel'
 // import PrimeVue && other modules end
 
 import 'normalize.css'
@@ -42,5 +43,6 @@ app.component('InputText', InputText)
 app.component('DataTable', DataTable)
 app.component('Column', Column)
 app.component('ScrollTop', ScrollTop)
+app.component('Panel', Panel)
 
 app.use(store).use(router).use(PrimeVue).mount('#app')

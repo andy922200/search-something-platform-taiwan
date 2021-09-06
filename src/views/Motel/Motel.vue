@@ -10,12 +10,23 @@
                 optionGroupLabel="label"
                 optionGroupChildren="items"
                 :filter="true"
+                :filterFields="['label','value.addressFull']"
+                :filterPlaceholder="$t('Motel.dropdown_search_rule')"
                 :placeholder="$t('Motel.PleaseSelect')"
+                :emptyFilterMessage="$t('Motel.no_result')"
                 @change="methodSelectNewMotel"
             >
                 <template #optiongroup="slotProps">
                     <div class="p-d-flex p-ai-center country-item">
+                        <i class="pi pi-map"></i>
                         <div>{{slotProps.option.label}}</div>
+                    </div>
+                </template>
+                <template #value="slotProps">
+                    <div class="p-dropdown-car-value">
+                        <div>
+                            <span>{{slotProps.value.label}}</span>
+                        </div>
                     </div>
                 </template>
             </Dropdown>
@@ -23,6 +34,12 @@
 
         <p class="motel__info">{{selectedMotelModel.value ? selectedMotelModel.value.addressFull : ""}}</p>
         <p class="motel__info">{{selectedMotelModel.value ? selectedMotelModel.value.tel : ""}}</p>
+        <p class="motel__info">
+            {{$t('Motel.latitude')}} : {{selectedMotelModel.value ? selectedMotelModel.value.latitude : ""}}
+        </p>
+        <p class="motel__info">
+            {{$t('Motel.longitude')}} : {{selectedMotelModel.value ? selectedMotelModel.value.longitude : ""}}
+        </p>
 
         <div class="motelMap__wrapper">
             <ProgressSpinner v-if="motelLoadingStatus" />

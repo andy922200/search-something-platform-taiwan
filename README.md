@@ -1,4 +1,4 @@
-# Search Something What You Need in Taiwan
+# Taiwan Motel Map 台灣摩鐵 QK 地圖
 
 <p align="center">
     <img src="./iconForReadme.jpg" alt="logo" width="256" height="147">
@@ -9,25 +9,14 @@
 - [Prerequisites](#prerequisites)
 
 ## About this project 
-<p>This Project includes the following modules:</p>
-<ul>
-    <li>
-        <a href="https://andy922200.github.io/search-something-platform-taiwan">
-            Taiwan Motel Map
-        </a>
-    </li>
-    <li>... update soon</li>
-</ul>
-
 <p>This project are using the following packages:</p>
 <p>這專案使用了以下套件</p>
 
 - [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
 - [Babel Compiler](https://babeljs.io/) - Use next generation JavaScript, today.
 - [Dayjs](https://day.js.org/) - Fast 2kB alternative to Moment.js with the same modern API
-- [Element UI Plus](https://element-plus.org/#/en-US) - Element Plus, a Vue 3.0 based component library (Including Day.js)
 - [ESLint](https://eslint.org/) - Find and fix problems in your JavaScript code
-- [Json-Server](https://github.com/typicode/json-server) - Get a full fake REST API with zero coding in less than 30 seconds (seriously)
+- [Prime Vue](https://www.primefaces.org/primevue/) - Powerful yet simple to use, versatile, performant Vue UI Component Library to help you build stunning user interfaces.
 - [Stylelint](https://stylelint.io/) - A mighty, modern linter that helps you avoid errors and enforce conventions in your styles.
 - [TestCafe](https://devexpress.github.io/testcafe/) - A node.js tool to automate
 end-to-end web testing
@@ -41,11 +30,11 @@ end-to-end web testing
 - [npm](https://www.npmjs.com/get-npm)
 - [Node.js](https://nodejs.org/en/download/)
 
-This Demo project is running on Node.js (12.20.0), NPM (6.14.9) while testing.
+This Demo project is running on Node.js (12.22.1), NPM (6.14.12) while testing.
 
 ## Clone / Download
 1. Clone this repository to your local machine
-2. Start your development :)
+2. Start your development :
 
 ```
 $ git clone https://github.com/andy922200/search-something-platform-taiwan.git

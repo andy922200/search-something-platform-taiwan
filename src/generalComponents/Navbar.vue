@@ -27,7 +27,7 @@
             </Sidebar>
             <div class="area">
                 <i
-                    class="pi pi-bars p-toolbar-separator p-mr-2"
+                    class="pi pi-bars p-toolbar-separator p-mr-2 hamburger-icon"
                     @click="triggerLeftNavigation(true)"
                 />
             </div>
@@ -77,7 +77,10 @@ export default defineComponent({
         const store = useStore()
         const currentRoute = reactive(useRoute())
         const router = useRouter()
-        const routeList = router.options.routes
+        const routeList = router.options.routes.filter(route => {
+            const routeName = route.name as string
+            return !routeName.includes('404')
+        })
         const { locale } = useI18n()
         const selectedPage = ref('')
 

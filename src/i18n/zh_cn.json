@@ -1,24 +1,32 @@
 {
     "Motel": {
         "PleaseSelect": "请选择",
-        "MultiSelectHeader": "请选择选项 ( 至多 3 个 )",
+        "dropdown_search_rule": "地址 / 旅馆名称",
+        "MultiSelectHeader": "请选择至多 3 个选项",
+        "no_result": "没有符合结果",
         "Close": "关闭",
         "Name": "名称",
         "City": "县市",
         "Area": "乡镇市区",
         "Address": "完整地址",
         "Tel": "电话",
-        "title": "台湾汽车旅馆搜寻"
+        "title": "台湾汽车旅馆搜寻",
+        "latitude": "纬度",
+        "longitude": "经度",
+        "search_by_name": "输入名称",
+        "search_by_city": "输入城市名"
     },
     "About": {
         "title": "关于",
-        "content": "这是关于页"
+        "content": "关于此专案",
+        "dataResources": "资料来源",
+        "corePackages": "专案用到的核心套件"
     },
     "Navbar": {
         "content": "内容",
         "sidebar": {
             "taiwanMotelSearch": "台湾汽车旅馆搜寻",
-            "about": "关于"
+            "about": "关于此专案"
         }
     }
 }
